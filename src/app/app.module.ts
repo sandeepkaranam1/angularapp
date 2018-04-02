@@ -7,11 +7,12 @@ import {UserComponent} from './components/user/user.component';
 import { TypeComponent } from './components/type/type.component';
 import { InterComponent } from './components/inter/inter.component';
 import { UsersComponent } from './components/users/users.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,UserComponent, TypeComponent, InterComponent, UsersComponent
+    AppComponent,UserComponent, TypeComponent, InterComponent, UsersComponent, NavbarComponent
   ],
   imports: [
     BrowserModule
