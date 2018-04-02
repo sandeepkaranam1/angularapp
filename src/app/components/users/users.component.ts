@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   showExtended=true;
   ie=false;
   loaded:boolean=false;
+  enableAdd:boolean=true;
 
   constructor() { }
 
@@ -19,33 +20,36 @@ export class UsersComponent implements OnInit {
 
    setTimeout(()=>{
        this.users=[
-      //  {  firstName:'Raghu Babu',
-      //   lastName:'Naidu',
-      //   age:50,
-      //   address:{
-      //     street:'Official Colony Srinagar',
-      //     city:'vizag',
-      //     state:'Andhra'
-      //   }
-      // },{
-      //   firstName:'Uma',
-      //   lastName:'Karanam',
-      //   age:43,
-      //   address:{
-      //     street:'Official Colony Srinagar',
-      //     city:'vizag',
-      //     state:'Andhra'
-      //   }
-      // },{
-      //   firstName:'Sandeep',
-      //   lastName:'Naidu',
-      //   age:25,
-      //   address:{
-      //     street:'508 Main St',
-      //     city:'Atlanta',
-      //     state:'Ga'
-      //   }
-      // }
+       {  firstName:'Raghu Babu',
+        lastName:'Naidu',
+        age:50,
+        address:{
+          street:'Official Colony Srinagar',
+          city:'vizag',
+          state:'Andhra'
+        },
+        image:'http://lorempixel.com/300/300/people/3'
+      },{
+        firstName:'Uma',
+        lastName:'Karanam',
+        age:43,
+        address:{
+          street:'Official Colony Srinagar',
+          city:'vizag',
+          state:'Andhra'
+        },
+        image:'http://lorempixel.com/600/600/people/2'
+      },{
+        firstName:'Sandeep',
+        lastName:'Naidu',
+        age:25,
+        address:{
+          street:'508 Main St',
+          city:'Atlanta',
+          state:'Ga'
+        },
+        image:'http://lorempixel.com/300/300/people/1'
+      }
     ];
       this.loaded=true;
    },2000);
