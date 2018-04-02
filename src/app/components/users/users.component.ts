@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   ie=false;
   loaded:boolean=false;
   enableAdd:boolean=true;
+  currentStyles:{};
 
   constructor() { }
 
@@ -28,7 +29,10 @@ export class UsersComponent implements OnInit {
           city:'vizag',
           state:'Andhra'
         },
-        image:'http://lorempixel.com/300/300/people/3'
+        image:'http://lorempixel.com/300/300/people/3',
+        isActive:true,
+        balance:100,
+        registered:new Date('01/02/2018 08:30:00')
       },{
         firstName:'Uma',
         lastName:'Karanam',
@@ -38,7 +42,10 @@ export class UsersComponent implements OnInit {
           city:'vizag',
           state:'Andhra'
         },
-        image:'http://lorempixel.com/600/600/people/2'
+        image:'http://lorempixel.com/600/600/people/2',
+        isActive:false,
+        balance:200,
+        registered:new Date('01/12/2017 08:30:00')
       },{
         firstName:'Sandeep',
         lastName:'Naidu',
@@ -48,10 +55,14 @@ export class UsersComponent implements OnInit {
           city:'Atlanta',
           state:'Ga'
         },
-        image:'http://lorempixel.com/300/300/people/1'
+        image:'http://lorempixel.com/300/300/people/1',
+        isActive:true,
+        balance:100,
+        registered:new Date('01/05/2017 08:30:00')
       }
     ];
       this.loaded=true;
+      this.setCurrentStyles();
    },2000);
    
     
@@ -68,6 +79,12 @@ export class UsersComponent implements OnInit {
   }
 
 
+  setCurrentStyles(){
+    this.currentStyles={
+      'padding-top':this.showExtended?'0':'40px',
+       'font-size':this.showExtended?'':'40px'
+    }
+  }
 
   // addUser(user:User)
   // {
