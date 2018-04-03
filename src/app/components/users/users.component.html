@@ -1,9 +1,22 @@
 <button (click)="showUserForm= !showUserForm" class="btn btn-dark mb-3">Add User</button>
 <div class="card card-body mb-3" *ngIf="showUserForm">
-  <form (submit)="onSubmit($event)">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <div class="form-group">
       <label>First Name</label>
-      <input (keydown)="fireEvent($event)" [(ngModel)]="user.firstName" type="text" class="form-control" name="firstName">
+      <input  [(ngModel)]="user.firstName"
+      [ngClass]="{'is-invalid':userFirstName.errors && userFirstName.touched}"
+       type="text" 
+       class="form-control"
+       name="firstName"
+       #userFirstName="ngModel"
+       required
+       minlength="2">
+       <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
+         First Name Required
+       </div>
+       <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
+        Must be atleast 2 characters length
+      </div>
     </div>
     <div class="form-group">
       <label>Last Name</label>
@@ -11,9 +24,20 @@
     </div>
     <div class="form-group">
       <label>email</label>
-      <input type="text" [(ngModel)]="user.email" class="form-control" name="email">
+      <input type="text" [(ngModel)]="user.email" class="form-control" name="email"
+       #userEmail="ngModel"
+       [ngClass]="{'is-invalid':userEmail.errors && userEmail.touched}"
+       required
+       pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      >
+      <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
+        Email Required
+      </div>
+      <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
+       Enter a valid email
+     </div>
     </div>
-    <button  [disabled]="user.firstName =='' || user.lastName== ''" class="btn btn-light btn-block mb-3">
+    <button  [disabled]="!userForm.form.valid" class="btn btn-light btn-block mb-3">
       <b> Add new User</b>
     </button>
   </form>
