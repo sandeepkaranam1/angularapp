@@ -14,12 +14,7 @@ export class InterComponent  {
    this.user={
      firstName:'Raghu Babu',
      lastName:'Naidu',
-     age:50,
-     address:{
-       street:'Official Colony Srinagar',
-       city:'vizag',
-       state:'Andhra'
-     }
+     email:'krb@gmail.com'
    }
   }
 
