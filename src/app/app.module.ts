@@ -9,6 +9,7 @@ import { TypeComponent } from './components/type/type.component';
 import { InterComponent } from './components/inter/inter.component';
 import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { DataService } from './services/data.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
