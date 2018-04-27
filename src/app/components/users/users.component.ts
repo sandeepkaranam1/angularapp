@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {User} from '../../models/User';
-import {UserService} from '../../services/user.service';
+import { User } from '../../models/User';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -9,81 +9,78 @@ import {UserService} from '../../services/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  user : User = { 
-    firstName:'',
-    lastName:'',
-    email:''
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: ''
   }
-  users:User[];
-  showExtended=true;
-  ie=false;
-  loaded:boolean=false;
-  enableAdd:boolean=true;
-  showUsersForm:boolean=true;
-  @ViewChild('userForm')  form:any;
-  data : any;
+  users: User[];
+  showExtended = true;
+  ie = false;
+  loaded: boolean = false;
+  enableAdd: boolean = true;
+  showUsersForm: boolean = true;
+  @ViewChild('userForm') form: any;
+  data: any;
 
-  constructor(private dataService:UserService) { }
+  constructor(private dataService: UserService) { }
 
   ngOnInit() {
 
-    this.dataService.getData().subscribe(data =>{
+    this.dataService.getData().subscribe(data => {
       console.log(data);
     });
 
-    this.dataService.getUsers().subscribe(users =>{
-      this.users=users;
-      this.loaded=true;
+    this.dataService.getUsers().subscribe(users => {
+      this.users = users;
+      this.loaded = true;
     })
-    
-   setTimeout(()=>{
-       
-      this.loaded=true;
-     
-   },2000);
-   
-    
-   
+
+    setTimeout(() => {
+
+      this.loaded = true;
+
+    }, 2000);
+
+
+
   }
 
 
-  fireEvent(e){
+  fireEvent(e) {
     console.log(e.type);
     console.log(e.target.value);
-    
+
   }
 
 
-  addUser()
-  {
-    this.user.isActive=true;
-    this.user.registered=new Date();
+  addUser() {
+    this.user.isActive = true;
+    this.user.registered = new Date();
     this.users.unshift(this.user);
 
-    this.user={
-      firstName:'',
-    lastName:'',
-   email:''
+    this.user = {
+      firstName: '',
+      lastName: '',
+      email: ''
     }
   }
 
-  toggleHide(user:User)
-  {
-    user.hide=!user.hide;
+  toggleHide(user: User) {
+    user.hide = !user.hide;
   }
 
-  onSubmit({value,valid}:{value:User,valid:boolean})
-  {
-  if(!valid){
-    console.log('Form is not Valid');
-  }
-  else{
-    value.isActive=true;
-    value.registered= new Date();
-    value.hide= true;
-    this.dataService.addUser(value);
-    this.form.reset();
-  }  
+  onSubmit({ value, valid }: { value: User, valid: boolean }) {
+    if (!valid) {
+      console.log('Form is not Valid');
+    }
+    else {
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+      this.dataService.addUser(value);
+      this.form.reset();
+    }
   }
 
 }
